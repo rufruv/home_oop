@@ -1,39 +1,50 @@
 package test;
 
-import java.util.Scanner;
-
 public class Ssn {
-	String ssn, name;
-
-	public String getGender(String ssn) {
-		String result = " ";
+	String ssn, name, gender;
+	
+	public void setSsn(String ssn){
+		this.ssn = ssn ;
+	}
+	public String getSsn(){
+		return ssn ; 
+	}
+	
+	public void setName(String name){
+		this.name = name;
+	}
+	public String getName(){
+		return name;
+	}
+	
+	public void calcGender(){
 		char ch = ssn.charAt(7);
-		if (ch == '0' || ch == '7' || ch == '8' || ch == '9') {
-			result = "다시 입력하세요";
-		}
-
+		
 		if (ch == '1' || ch == '3') {
-			result = "남자";
+			gender = "남자";
 		} else if (ch == '2' || ch == '4') {
-			result = "여자";
+			gender = "여자";
 		} else {
-			result = "외국인";
+			gender= "외국인";
 		}
-		return result;
+	}
+	
+	public String getGender() {
+		return gender;
 	}
 
-	public static void main(String[] args) {
-		Scanner s = new Scanner(System.in);
+	/*public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
 		Ssn member = new Ssn();
-
+		
 		System.out.println("이름:");
-		member.name = s.next();
+		member.name = scanner.next();
 		System.out.println("주민번호: ");
-		member.ssn = s.next();
-
-		String gender = member.getGender(member.ssn);
-		System.out.println(member.name + "(" + member.getGender(member.ssn) + ")");
-		// 한석규(남)
-	}
+		member.ssn = scanner.next();
+		
+		String gender = member.getGender = (member.ssn);
+		System.out.println(member.name + "(" + member.getGender(member.ssn)+")");
+		//  한석규(남)
+	}*/
 
 }

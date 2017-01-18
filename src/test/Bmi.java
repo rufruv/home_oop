@@ -1,11 +1,46 @@
 package test;
 
 public class Bmi {
-	String name, result ; // instance variable 반드시 initialize하지 않는다
-	int age ;
-	double weight, height, bmi ;
+	private String name, result ; // instance variable 반드시 initialize하지 않는다
+	private int age ;
+	private double weight, height, bmi ;
+
+	public void setName(String name){ // 저장
+		this.name = name;
+	}
+	public String getName(){ // 
+		return name;
+	}
 	
-	public String getResult(double weight, double height){
+	public void setAge(int age){
+		this.age = age;
+	}
+	public int getAge(){
+		return age ; 
+	}
+	
+	public void setWeight(double weight){
+		this.weight = weight;
+	}
+	public double getWeight(){
+		return weight ;
+	}
+	
+	public void setHeight(double height){
+		this.height = height;
+	}
+	public double getHeight(){
+		return height;
+	}
+	
+	public void setBmi(double bmi){
+		this.bmi = bmi;
+	}
+	public double getBmi(){
+		return bmi;
+	}
+	// setter를 생략하면, readOnly 파일( 수정할수 없고, 읽을수만 있는!!! )
+	public void calcBmi(){
 		bmi = weight / (height * height);
 		if (bmi > 30.0) {
 			result = "고도비만";
@@ -18,7 +53,10 @@ public class Bmi {
 		} else {
 			result = "저체중";
 		}
-		return String.format("%s의 BMI 결과는 %s/n", name, result);
+		/*this.result = result ;*/ 
+	}
+	public String getResult(){
+		return result;
 	}
 /*	public static void main(String[] args) { // local variable 반드시 initialize
 		Scanner scanner = new Scanner(System.in);

@@ -1,30 +1,8 @@
 package hospital;
 
-public class Doctors {
-	private String docName, docGen, docPhone, docEmail, docPosition, majorTreat ;
-	private int docId ;
-	
-	public void setDocName(String docName){
-		this.docName = docName;
-	}
-	public String getDocName(){
-		return docName ;
-	}
-	
-	public void setDocPhone(String docPhone){
-		this.docPhone = docPhone;
-	}
-	public String getDocPhone(){
-		return docPhone ;
-	}
-	
-	public void setDocEmail(String docEmail){
-		this.docEmail = docEmail;
-	}
-	public String getDocEmail(){
-		return docEmail ;
-	}
-	
+public class Doctors extends Member{
+	private String docPosition, majorTreat ;
+		
 	public void setDocPosition(String docPosition){
 		this.docPosition = docPosition;
 	}
@@ -38,15 +16,9 @@ public class Doctors {
 	public String getMajorTreat(){
 		return majorTreat ;
 	}
-	
-	public void setDocId(int docId){
-		this.docId = docId ;
-	}
-	public int getDocId(){
-		return docId ;
-	}
-	
-	public void calcDocGen(String ssn) {
+
+	public String getDocGen(String ssn) {
+		String docGen = "";
 		char ch = ssn.charAt(7);
 		if (ch == '0' || ch == '7' || ch == '8' || ch == '9') {
 			docGen = "주민번호 오류! 다시 입력하세요";
@@ -58,13 +30,17 @@ public class Doctors {
 		} else {
 			docGen = "외국인";
 		}
+		return docGen;
 	}
-	public String getDocGen(){
-		return docGen ;
-	}
-	public int getAge(String ssn){
-		int year  = Integer.parseInt(ssn.substring(0,2)) + 1900; 
-		int age = 2017- year ; 
-		return age;
+	
+	@Override
+	public String toString() {
+		return String.format("의사ID: %s\n"
+							+"담당진료과목: %s\n"
+							+"성명: %s\n"
+							+"성별: %s\n"
+							+"전화번호:%s\n"
+							+"이메일: %s\n"
+							+"직급: %s\n", docUid, majorTreat, name, calcGender(ssn), phone, email, docPosition);
 	}
 }
